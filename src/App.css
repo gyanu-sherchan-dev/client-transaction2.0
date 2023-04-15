@@ -1,0 +1,36 @@
+.layout-register {
+  background: url("../src/assestes/darkness.webp");
+}
+
+.layout-login {
+  background: url("../src/assestes/grey_sandbag.webp");
+}
+
+.login-page {
+  width: 400px;
+  border: 1px solid rgb(245, 240, 240);
+  padding: 2rem;
+  border-radius: 5px;
+  margin: auto;
+  box-shadow: -4px 8px 8px 5px rgba(24, 24, 24, 0.372);
+  font-weight: 600;
+}
+
+.register-page {
+  width: 400px;
+  border: 1px solid rgb(245, 240, 240);
+  padding: 2rem;
+  border-radius: 5px;
+  margin: auto;
+  box-shadow: -4px 8px 8px 5px rgba(24, 24, 24, 0.372);
+  font-weight: 600;
+  color: white;
+}
+
+.header {
+  font-weight: 700;
+}
+
+footer {
+  font-weight: 600;
+}
