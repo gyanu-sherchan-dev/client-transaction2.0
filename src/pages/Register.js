@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Layout from "../components/layout/Layout";
-import { CustomInput } from "../components/CustomInput";
+import { CustomInput } from "../components/customInput/CustomInput";
 
 export const Register = ({ registerbg }) => {
   const inputFields = [
@@ -41,6 +41,10 @@ export const Register = ({ registerbg }) => {
         <Button variant="warning" type="submit">
           Submit
         </Button>
+        <div className="mt-4 d-flex justify-content-start">
+          <p className="me-4">Already have Account !</p>
+          <a href="/"> Login here.</a>
+        </div>
       </Form>
     </Layout>
   );

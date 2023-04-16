@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Layout from "../components/layout/Layout";
-import { CustomInput } from "../components/CustomInput";
+import { CustomInput } from "../components/customInput/CustomInput";
 
 export const Login = () => {
   const inputFields = [
