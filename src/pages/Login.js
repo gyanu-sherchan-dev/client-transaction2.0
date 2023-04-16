@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Layout from "../components/layout/Layout";
 import { CustomInput } from "../components/customInput/CustomInput";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const inputFields = [
@@ -38,7 +39,7 @@ export const Login = () => {
 
         <div className="mt-4 d-flex justify-content-start">
           <p className="me-4">New here</p>
-          <a href="/register"> Register here !!</a>
+          <Link to="/register"> Register here !!</Link>
         </div>
       </Form>
     </Layout>
