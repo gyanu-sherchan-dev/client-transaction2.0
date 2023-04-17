@@ -17,6 +17,9 @@ export const Header = ({ registerbg }) => {
             <Link to="/register" className="nav-link">
               Register
             </Link>
+            <Link to="#" className="nav-link">
+              Logout
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
