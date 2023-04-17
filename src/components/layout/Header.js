@@ -3,9 +3,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header = ({ registerbg }) => {
   return (
-    <Navbar variant="light" expand="md">
+    <Navbar variant={registerbg ? "dark" : "light"} expand="md">
       <Container className="header">
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
