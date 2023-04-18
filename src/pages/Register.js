@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Layout from "../components/layout/Layout";
 import { CustomInput } from "../components/customInput/CustomInput";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const Register = ({ registerbg }) => {
   const inputFields = [
@@ -30,13 +31,29 @@ export const Register = ({ registerbg }) => {
       max: 9999,
     },
   ];
+
+  const [formData, setFormData] = useState({});
+  console.log(formData);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   return (
     <Layout registerbg={registerbg}>
-      <Form className="register-page">
+      <Form className="register-page" onSubmit={handleSubmit}>
         <h2>Register</h2>
 
         {inputFields.map((item, i) => {
-          return <CustomInput key={i} {...item} />;
+          return <CustomInput key={i} {...item} onChange={handleChange} />;
         })}
 
         <Button variant="warning" type="submit">
