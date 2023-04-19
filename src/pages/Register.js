@@ -4,6 +4,7 @@ import Layout from "../components/layout/Layout";
 import { CustomInput } from "../components/customInput/CustomInput";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { postUser } from "../utils/axiosHelper";
 
 export const Register = ({ registerbg }) => {
   const inputFields = [
@@ -43,9 +44,12 @@ export const Register = ({ registerbg }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
+    //now formData is the data we want to send to backend when we click submit. hence we going to call the axios function on handleOnSubmit.
+    const { data } = await postUser(formData); // this one will receive the promise pending, lets say we going to pass the result into result variable and we going to wait.
+    console.log(data); // now if we check in the network tab, use Fetch/XHR, input data in the frontend and submit, when you submit, you may get Cors issue, it says your application is serving from PORT 3000, and you making API to PORT 8000, there is something going on and it doesnot like it. to fix the issue you need to go to server.js and use Cors, it will allow to access cross orgin request
   };
   return (
     <Layout registerbg={registerbg}>
