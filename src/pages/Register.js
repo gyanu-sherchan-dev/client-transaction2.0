@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import { Button, Alert } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Layout from "../components/layout/Layout";
 import { CustomInput } from "../components/customInput/CustomInput";
@@ -34,7 +34,8 @@ export const Register = ({ registerbg }) => {
   ];
 
   const [formData, setFormData] = useState({});
-  console.log(formData);
+  // console.log(formData);
+  const [response, setResponse] = useState({}); // to handle response received from backend
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,11 +51,18 @@ export const Register = ({ registerbg }) => {
     //now formData is the data we want to send to backend when we click submit. hence we going to call the axios function on handleOnSubmit.
     const { data } = await postUser(formData); // this one will receive the promise pending, lets say we going to pass the result into result variable and we going to wait.
     console.log(data); // now if we check in the network tab, use Fetch/XHR, input data in the frontend and submit, when you submit, you may get Cors issue, it says your application is serving from PORT 3000, and you making API to PORT 8000, there is something going on and it doesnot like it. to fix the issue you need to go to server.js and use Cors, it will allow to access cross orgin request
+    setResponse(data); // now we have data in the response variable, and we will use to display in our UI as below.
   };
   return (
     <Layout registerbg={registerbg}>
       <Form className="register-page" onSubmit={handleSubmit}>
         <h2>Register</h2>
+        <hr />
+        {response.message && (
+          <Alert variant={response.status === "success" ? "success" : "danger"}>
+            {response.message}
+          </Alert>
+        )}
 
         {inputFields.map((item, i) => {
           return <CustomInput key={i} {...item} onChange={handleChange} />;
