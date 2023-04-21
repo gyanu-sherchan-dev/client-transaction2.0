@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Layout from "../components/layout/Layout";
 import { CustomInput } from "../components/customInput/CustomInput";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const Login = () => {
   const inputFields = [
@@ -24,13 +25,23 @@ export const Login = () => {
     },
   ];
 
+  const [form, setForm] = useState({});
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...value,
+      [name]: value,
+    });
+  };
+
   return (
     <Layout>
       <Form className="login-page">
         <h3 className="mb-4">Welcome Back !!</h3>
 
         {inputFields.map((item, i) => {
-          return <CustomInput key={i} {...item} />;
+          return <CustomInput key={i} {...item} onChange={handleOnChange} />;
         })}
 
         <Button variant="warning" type="submit">
