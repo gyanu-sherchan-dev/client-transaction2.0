@@ -24,8 +24,16 @@ export const postUser = (formData) => {
   }
 };
 
-//fetch all data from the server
+//login user
 
-//send data to switch the task
-
-//send data to delete from DB
+export const loginUser = (formData) => {
+  try {
+    console.log(formData);
+    return axios.post(userUrl + "/login", formData);
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
