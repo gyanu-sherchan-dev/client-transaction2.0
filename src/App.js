@@ -3,6 +3,7 @@ import { Login } from "./pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Register } from "./pages/Register";
 import { useState } from "react";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const [registerbg, setRegisterbg] = useState("register-layout");
@@ -16,6 +17,7 @@ function App() {
             path="/register"
             element={<Register registerbg={registerbg} />}
           />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

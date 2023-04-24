@@ -1,16 +1,23 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import Layout from "../components/layout/Layout";
 import { CustomInput } from "../components/customInput/CustomInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { loginUser } from "../utils/axiosHelper";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const [response, setResponse] = useState({});
   const [form, setForm] = useState({
     email: "g@gmail.com",
     pin: "1234",
   });
+
+  // useEffect(() => {
+  //   navigate("/dashboard");
+  // }, []);
   const inputFields = [
     {
       label: "Email",
@@ -40,17 +47,27 @@ export const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(form);
-    const user = loginUser(form);
-    console.log(user);
+    const { data } = await loginUser(form);
+    setResponse(data);
+    if (data.status === "success") {
+      sessionStorage.setItem("user", JSON.stringify(data.user));
+      navigate("/dashboard");
+    }
   };
 
   return (
     <Layout>
       <Form className="login-page" onSubmit={handleSubmit}>
         <h3 className="mb-4">Welcome Back !!</h3>
+
+        {response.status === "error" && (
+          <Alert variant={response.status === "error" && "danger"}>
+            {response.message}
+          </Alert>
+        )}
 
         {inputFields.map((item, i) => {
           return <CustomInput key={i} {...item} onChange={handleOnChange} />;

@@ -1,12 +1,15 @@
 .layout-register {
-  background: url("../src/assestes/darkness.webp");
-}
-
-.layout-login {
+  /* background: url("../src/assestes/darkness.webp"); */
   background: url("../src/assestes/grey_sandbag.webp");
 }
 
+.layout-login {
+  background: url("../src/assestes/darkness.webp");
+  /* background: url("../src/assestes/grey_sandbag.webp"); */
+}
+
 .login-page {
+  color: white;
   width: 400px;
   border: 1px solid rgb(245, 240, 240);
   padding: 2rem;
@@ -25,11 +28,40 @@
   margin: auto;
   box-shadow: -4px 8px 8px 5px rgba(24, 24, 24, 0.372);
   font-weight: 600;
-  color: white;
+  color: black;
 }
 
 .header {
   font-weight: 700;
+}
+
+.dashboard {
+  max-height: 300px;
+  overflow-x: hidden;
+}
+
+.transForm {
+  margin-top: 0;
+  background: rgb(219, 213, 106);
+  font-weight: 600;
+  letter-spacing: 2px;
+  min-height: 100px;
+  padding: 1rem;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  /* box-shadow: -2px 2px 2px 2px grey; */
+}
+
+.transTable {
+  background: rgb(77, 117, 196);
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  min-height: 400px;
+  padding: 1rem;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  /* box-shadow: -2px 2px 20px 10px rgb(99, 99, 206); */
 }
 
 footer {
