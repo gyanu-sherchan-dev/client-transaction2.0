@@ -17,10 +17,12 @@ export const Header = ({ registerbg }) => {
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <div className="text-info">Welcome back !! {user?.name}</div>
           <Nav className="ms-auto">
             {user?._id ? (
               <>
+                <div className=" nav-link text-info">
+                  Welcome back !! {user?.name}
+                </div>
                 <Link to="/dashboard" className="nav-link">
                   Dashboard
                 </Link>
