@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 const intialState = {
   type: "",
   name: "",
-  amount: null, // the data type you record in the form below is number and here you are passing string, conflict, hense null
+  amount: "", // the data type you record in the form below is number and here you are passing string, conflict, hense null
 };
 
 const TransForm = () => {
