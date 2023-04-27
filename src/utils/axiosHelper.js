@@ -5,6 +5,9 @@ import axios from "axios";
 //but as we going to have multiple endpoint, let's create the rootUrl and for each endpoint we will add on relevant function respectively.
 const rootUrl = "http://localhost:8000/api/v1";
 const userUrl = rootUrl + "/user";
+const transUrl = rootUrl + "/transaction";
+
+// ------- User Section -------
 
 //send data to server to add to DB
 //export this function so that we can call from handle on Submit.
@@ -30,6 +33,41 @@ export const loginUser = (formData) => {
   try {
     console.log(formData);
     return axios.post(userUrl + "/login", formData);
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+// ------- Transaction Section -------
+
+const getUserIdFromStorage = () => {
+  const user = sessionStorage.getItem("user");
+  if (user) {
+    const userObj = JSON.parse(user);
+    return userObj?._id;
+  }
+  return;
+};
+
+//post transaction
+export const postTrans = async (formData) => {
+  try {
+    const userId = getUserIdFromStorage();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "you must be logged in first",
+      };
+    }
+    const { data } = await axios.post(transUrl, formData, {
+      headers: {
+        Authorization: getUserIdFromStorage(), //where do you get this userId, from session storage, see above to get id from ss
+      },
+    });
+    return data;
   } catch (error) {
     return {
       status: "error",

@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import { postTrans } from "../../utils/axiosHelper";
 
 const intialState = {
   type: "",
@@ -22,9 +23,12 @@ const TransForm = () => {
     });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
+
+    const { data } = await postTrans(form);
+    console.log(data);
     //why we need initialState data.
     //let say we have done the call api to send data to database
     //after that reset the form
