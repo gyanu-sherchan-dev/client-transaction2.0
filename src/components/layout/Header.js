@@ -10,7 +10,7 @@ export const Header = ({ registerbg }) => {
     const user = JSON.parse(sessionStorage.getItem("user"));
     setUser(user);
   }, []);
-  console.log(user);
+
   return (
     <Navbar variant={registerbg ? "light" : "dark"} expand="md">
       <Container className="header">
