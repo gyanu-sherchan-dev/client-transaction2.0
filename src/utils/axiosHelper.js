@@ -66,7 +66,7 @@ export const postTrans = async (formData) => {
       };
     }
 
-    const data = await axios.post(transUrl, formData, {
+    const { data } = await axios.post(transUrl, formData, {
       headers: {
         Authorization: userId,
       },

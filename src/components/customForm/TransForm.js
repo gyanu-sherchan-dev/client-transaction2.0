@@ -5,6 +5,8 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { postTrans } from "../../utils/axiosHelper";
 
+import { toast } from "react-toastify";
+
 const intialState = {
   type: "",
   name: "",
@@ -25,10 +27,11 @@ const TransForm = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
 
-    const { data } = await postTrans(form);
-    console.log(data);
+    const { status, message } = await postTrans(form);
+    // status === "success" ? toast.success(message) : toast.error(message);
+    toast[status](message); // passing dynamically, same as above line
+
     //why we need initialState data.
     //let say we have done the call api to send data to database
     //after that reset the form

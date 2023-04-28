@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Register } from "./pages/Register";
 import { useState } from "react";
 import Dashboard from "./pages/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [registerbg, setRegisterbg] = useState("register-layout");
@@ -19,6 +21,8 @@ function App() {
           />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
+
+        <ToastContainer />
       </BrowserRouter>
     </div>
   );
