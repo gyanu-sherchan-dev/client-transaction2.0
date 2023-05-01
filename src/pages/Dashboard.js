@@ -20,6 +20,9 @@ const Dashboard = () => {
   return (
     <Layout>
       <TransForm />
+      <div className="text-info fw-bold mb-1">
+        {trans.length} transactions found
+      </div>
       <TransTable trans={trans} />
     </Layout>
   );

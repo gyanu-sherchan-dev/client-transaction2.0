@@ -23,7 +23,8 @@
 
 .register-page {
   width: 400px;
-  max-height: 450px;
+  min-height: 450px;
+  height: max-content;
   border: 1px solid rgb(245, 240, 240);
   padding: 0.5rem 1.5rem;
   border-radius: 5px;

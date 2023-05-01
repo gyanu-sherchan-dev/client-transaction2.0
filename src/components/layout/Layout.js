@@ -6,10 +6,7 @@ const Layout = ({ children, registerbg }) => {
   return (
     <div className={registerbg ? "layout-register" : "layout-login"}>
       <Header registerbg={registerbg} />
-      <Container
-        className="rounded-4 p-5 mt-5"
-        style={{ height: "max-content" }}
-      >
+      <Container className="rounded-4 p-5 mt-5" style={{ minHeight: "65vh" }}>
         {children}
       </Container>
 
