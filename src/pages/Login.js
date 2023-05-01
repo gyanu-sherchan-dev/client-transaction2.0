@@ -60,7 +60,7 @@ export const Login = () => {
 
   return (
     <Layout>
-      <Form className="login-page" onSubmit={handleSubmit}>
+      <Form className="login-form" onSubmit={handleSubmit}>
         <h3 className="mb-4">Welcome Back !!</h3>
 
         {response.status === "error" && (

@@ -80,3 +80,32 @@ export const postTrans = async (formData) => {
     };
   }
 };
+
+//get user specific Transaction:
+
+export const getTrans = async (formData) => {
+  try {
+    const userId = getUserIdFromStorage();
+    console.log(userId + "--------------axios");
+
+    if (!userId) {
+      return {
+        status: "error",
+        message: "you must be logged In",
+      };
+    }
+
+    const { data } = await axios.get(transUrl, {
+      headers: {
+        Authorization: userId,
+      },
+    });
+    console.log(data + "------- axios return data   ***"); // if you destructure data, transform.js wont have data, but if you not and  console data here it will return obj obj but won't dispaly any result.
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
