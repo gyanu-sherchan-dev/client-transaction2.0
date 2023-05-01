@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   const fetchTrans = async () => {
     const { trans } = await getTrans();
-    setTrans(trans);
+    trans?.length && setTrans(trans);
   };
   console.log(trans);
   return (
