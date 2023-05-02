@@ -13,7 +13,7 @@ const intialState = {
   amount: "", // the data type you record in the form below is number and here you are passing string, conflict, hense null
 };
 
-const TransForm = () => {
+const TransForm = ({ fetchTrans }) => {
   const [form, setForm] = useState(intialState);
 
   const handleOnChange = (e) => {
@@ -30,7 +30,9 @@ const TransForm = () => {
 
     const { status, message } = await postTrans(form);
     // status === "success" ? toast.success(message) : toast.error(message);
+
     toast[status](message); // passing dynamically, same as above line
+    status === "success" && fetchTrans();
 
     //why we need initialState data.
     //let say we have done the call api to send data to database

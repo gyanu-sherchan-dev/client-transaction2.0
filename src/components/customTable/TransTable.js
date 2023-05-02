@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Button, Form } from "react-bootstrap";
 import { deleteTrans } from "../../utils/axiosHelper";
+import { toast } from "react-toastify";
 
-const TransTable = ({ trans }) => {
+const TransTable = ({ trans, fetchTrans }) => {
   const [itemToDelete, setItemToDelete] = useState([]);
 
   const handleOnAllSelect = (e) => {
@@ -23,14 +24,13 @@ const TransTable = ({ trans }) => {
 
   const handleOnSelect = (e) => {
     const { checked, value } = e.target;
-    console.log(checked, value);
 
     // if checked is true, then add item to itemToDelete, if check is false then remove it from itemToDelete
     checked
       ? setItemToDelete([...itemToDelete, value])
       : setItemToDelete(itemToDelete.filter((_id) => _id !== value));
   };
-  console.log(itemToDelete);
+
   //tabel total
   const total = trans.reduce(
     (acc, { type, amount }) =>
@@ -38,14 +38,19 @@ const TransTable = ({ trans }) => {
     0
   );
 
-  const handleOnDelete = async () => {
+  const handleOnDelete = async (e) => {
     if (
       window.confirm(
-        `Are you sure you want to delete ${itemToDelete.length} transaction(s)`
+        `Are you sure you want to delete ${itemToDelete.length} transaction(s )`
       )
     ) {
       const result = await deleteTrans(itemToDelete);
-      console.log(result);
+      const { status, message } = result;
+      if (status === "success") {
+        setItemToDelete([]);
+        fetchTrans();
+      }
+      toast[status](message);
     }
   };
 
@@ -98,7 +103,7 @@ const TransTable = ({ trans }) => {
 
           <tr className="fw-bolder">
             <td colSpan={3}>Total Balance</td>
-            <td colSpan={2} className="text-dark">
+            <td colSpan={2} className="fw-bolder">
               $ {total}
             </td>
           </tr>

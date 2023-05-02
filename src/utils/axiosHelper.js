@@ -84,10 +84,9 @@ export const postTrans = async (formData) => {
 
 //get user specific Transaction:
 
-export const getTrans = async (formData) => {
+export const getTrans = async () => {
   try {
     const userId = getUserIdFromStorage();
-    console.log(userId + "--------------axios");
 
     if (!userId) {
       return {
@@ -101,7 +100,6 @@ export const getTrans = async (formData) => {
         Authorization: userId,
       },
     });
-    console.log(data + "------- axios return data   ***"); // if you destructure data, transform.js wont have data, but if you not and  console data here it will return obj obj but won't dispaly any result.
     return data;
   } catch (error) {
     return {
@@ -130,7 +128,7 @@ export const deleteTrans = async (ids) => {
         Authorization: userId,
       },
     });
-    console.log(data + "------- axios return data   ***"); // if you destructure data, transform.js wont have data, but if you not and  console data here it will return obj obj but won't dispaly any result.
+    console.log(data, "------- axios return data   ***"); // if you destructure data, transform.js wont have data, but if you not and  console data here it will return obj obj but won't dispaly any result.
     return data;
   } catch (error) {
     return {
