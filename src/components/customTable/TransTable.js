@@ -26,10 +26,10 @@ const TransTable = ({ trans, fetchTrans }) => {
 
     if (checked) {
       setItemToDelete(trans.map(({ _id }) => _id));
-      // setCheckBox(true);
+      setCheckBox(true);
     } else {
       setItemToDelete([]);
-      // setCheckBox(false);
+      setCheckBox(false);
     }
   };
 
