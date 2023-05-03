@@ -33,7 +33,6 @@ export const postUser = async (formData) => {
 
 export const loginUser = (formData) => {
   try {
-    console.log(formData);
     return axios.post(userUrl + "/login", formData);
   } catch (error) {
     return {

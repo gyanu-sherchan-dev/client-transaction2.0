@@ -4,12 +4,16 @@ import TransForm from "../components/customForm/TransForm";
 import TransTable from "../components/customTable/TransTable";
 
 import { getTrans } from "../utils/axiosHelper";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [trans, setTrans] = useState([]);
 
   useEffect(() => {
     fetchTrans();
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    !user && navigate("/");
   }, []); //we leave this square bracket dependency empty, so that we can run this code only once.
 
   const fetchTrans = async () => {
