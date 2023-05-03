@@ -5,16 +5,27 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 
 export const Header = ({ registerbg }) => {
+  // const navigate = useNavigate();
   const [user, setUser] = useState({});
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
     setUser(user);
   }, []);
 
+  const handleOnLogout = () => {
+    // remove the user from the sessionStorage
+    sessionStorage.removeItem("user");
+    // redirect user to the login page
+    // navigate("/");
+  };
+
   return (
     <Navbar variant={registerbg ? "light" : "dark"} expand="md">
       <Container className="header">
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          {/* <img src="../../../public/assets/FT2.0-img.png" alt="" /> */}
+          <div className="logo">FT2.0</div>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
@@ -23,10 +34,10 @@ export const Header = ({ registerbg }) => {
                 <div className=" nav-link text-info">
                   Welcome back !! {user?.name}
                 </div>
-                <Link to="/dashboard" className="nav-link">
+                {/* <Link to="/dashboard" className="nav-link">
                   Dashboard
-                </Link>
-                <Link to="#" className="nav-link">
+                </Link> */}
+                <Link to="/" className="nav-link" onClick={handleOnLogout}>
                   Logout
                 </Link>
               </>

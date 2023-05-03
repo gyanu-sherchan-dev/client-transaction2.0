@@ -6,29 +6,31 @@ import { toast } from "react-toastify";
 
 const TransTable = ({ trans, fetchTrans }) => {
   const [itemToDelete, setItemToDelete] = useState([]);
-
-  const handleOnAllSelect = (e) => {
-    const checked = e.target.checked;
-    if (checked) {
-      setItemToDelete(
-        trans.map(({ _id }) => {
-          return _id;
-        })
-      );
-    } else {
-      setItemToDelete([]);
-    }
-
-    console.log(checked);
-  };
+  const [checkbox, setCheckBox] = useState(false);
 
   const handleOnSelect = (e) => {
     const { checked, value } = e.target;
 
     // if checked is true, then add item to itemToDelete, if check is false then remove it from itemToDelete
-    checked
-      ? setItemToDelete([...itemToDelete, value])
-      : setItemToDelete(itemToDelete.filter((_id) => _id !== value));
+
+    if (checked) {
+      setItemToDelete([...itemToDelete, value]);
+      setCheckBox(trans.length === itemToDelete.length + 1);
+    } else {
+      setItemToDelete(itemToDelete.filter((_id) => _id !== value));
+      setCheckBox(false);
+    }
+  };
+  const handleOnAllSelect = (e) => {
+    const checked = e.target.checked;
+
+    if (checked) {
+      setItemToDelete(trans.map(({ _id }) => _id));
+      // setCheckBox(true);
+    } else {
+      setItemToDelete([]);
+      // setCheckBox(false);
+    }
   };
 
   //tabel total
@@ -63,7 +65,7 @@ const TransTable = ({ trans, fetchTrans }) => {
               <Form.Check
                 type="checkbox"
                 onChange={handleOnAllSelect}
-                checked={trans.length === itemToDelete.length}
+                checked={checkbox}
               />
             </th>
             <th>Date</th>

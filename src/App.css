@@ -1,12 +1,9 @@
 .layout-register {
-  /* background: url("../src/assestes/darkness.webp"); */
-  background: url("../src/assestes/grey_sandbag.webp");
+  background: url("../public/assets/grey_sandbag.webp");
 }
 
 .layout-login {
-  background: url("../src/assestes/darkness.webp");
-
-  /* background: url("../src/assestes/grey_sandbag.webp"); */
+  background: url("../public/assets/darkness.webp");
 }
 
 .login-form {
