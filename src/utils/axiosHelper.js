@@ -3,7 +3,11 @@ import axios from "axios";
 //apiUrl, initially set as below:
 // const apiUrl = "http://localhost:8000/api/v1/user";
 //but as we going to have multiple endpoint, let's create the rootUrl and for each endpoint we will add on relevant function respectively.
-const rootUrl = "http://localhost:8000/api/v1";
+// const rootUrl = "http://localhost:8000/api/v1";
+const rootUrl =
+  process.env.Node_ENV === "production"
+    ? "api/v1"
+    : "http://localhost:8000/api/v1";
 const userUrl = rootUrl + "/user";
 const transUrl = rootUrl + "/transaction";
 
