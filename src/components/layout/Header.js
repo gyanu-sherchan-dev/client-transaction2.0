@@ -23,8 +23,8 @@ export const Header = ({ registerbg }) => {
     <Navbar variant={registerbg ? "light" : "dark"} expand="md">
       <Container className="header">
         <Navbar.Brand href="#home">
-          {/* <img src="../../../public/assets/FT2.0-img.png" alt="" /> */}
-          <div className="logo">FT2.0</div>
+          FT2.0
+          {/* <img src="../../../assets/logo1.png" alt="" /> */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
