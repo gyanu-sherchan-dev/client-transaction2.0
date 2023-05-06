@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [trans, setTrans] = useState([]);
+  const [itemToDelete, setItemToDelete] = useState([]);
+  const [checkbox, setCheckBox] = useState(false);
 
   useEffect(() => {
     fetchTrans();
@@ -24,11 +26,24 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <TransForm fetchTrans={fetchTrans} />
+      <TransForm
+        fetchTrans={fetchTrans}
+        itemToDelete={itemToDelete}
+        setItemToDelete={setItemToDelete}
+        checkbox={checkbox}
+        setCheckBox={setCheckBox}
+      />
       <div className="text-info fw-bold mb-1">
         {trans.length} transactions found
       </div>
-      <TransTable trans={trans} fetchTrans={fetchTrans} />
+      <TransTable
+        trans={trans}
+        fetchTrans={fetchTrans}
+        itemToDelete={itemToDelete}
+        setItemToDelete={setItemToDelete}
+        checkbox={checkbox}
+        setCheckBox={setCheckBox}
+      />
     </Layout>
   );
 };

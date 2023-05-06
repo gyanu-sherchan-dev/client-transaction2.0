@@ -4,17 +4,26 @@ import { Button, Form } from "react-bootstrap";
 import { deleteTrans } from "../../utils/axiosHelper";
 import { toast } from "react-toastify";
 
-const TransTable = ({ trans, fetchTrans }) => {
-  const [itemToDelete, setItemToDelete] = useState([]);
-  const [checkbox, setCheckBox] = useState(false);
+const TransTable = ({
+  trans,
+  fetchTrans,
+  itemToDelete,
+  setItemToDelete,
+  setCheckBox,
+  checkbox,
+}) => {
+  // const [itemToDelete, setItemToDelete] = useState([]);
+  // const [checkbox, setCheckBox] = useState(false);
 
   const handleOnSelect = (e) => {
     const { checked, value } = e.target;
-
+    // console.log({ checked });
     // if checked is true, then add item to itemToDelete, if check is false then remove it from itemToDelete
 
     if (checked) {
+      // console.log([...itemToDelete, value], value, trans.length);
       setItemToDelete([...itemToDelete, value]);
+
       setCheckBox(trans.length === itemToDelete.length + 1);
     } else {
       setItemToDelete(itemToDelete.filter((_id) => _id !== value));
@@ -22,16 +31,16 @@ const TransTable = ({ trans, fetchTrans }) => {
     }
   };
   const handleOnAllSelect = (e) => {
-    const checked = e.target.checked;
-
-    if (checked) {
+    setCheckBox(!checkbox);
+    if (!checkbox) {
+      //  console.log(itemToDelete);
       setItemToDelete(trans.map(({ _id }) => _id));
-      setCheckBox(true);
     } else {
       setItemToDelete([]);
       setCheckBox(false);
     }
   };
+  console.log(itemToDelete.length);
 
   //tabel total
   const total = trans.reduce(
@@ -50,7 +59,10 @@ const TransTable = ({ trans, fetchTrans }) => {
       const { status, message } = result;
       if (status === "success") {
         setItemToDelete([]);
-        fetchTrans();
+        await fetchTrans();
+        console.log(trans);
+        setCheckBox(false);
+        // trans.length === 0 && setCheckBox(false);
       }
       toast[status](message);
     }

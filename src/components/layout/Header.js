@@ -24,7 +24,7 @@ export const Header = ({ registerbg }) => {
       <Container className="header">
         <Navbar.Brand href="#home">
           FT2.0
-          {/* <img src="../../../assets/logo1.png" alt="" /> */}
+          {/* <img src="../../../assets/logo2.png" alt="" className="logo" /> */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
