@@ -5,8 +5,8 @@ import axios from "axios";
 //but as we going to have multiple endpoint, let's create the rootUrl and for each endpoint we will add on relevant function respectively.
 // const rootUrl = "http://localhost:8000/api/v1";
 const rootUrl =
-  process.env.Node_ENV === "production"
-    ? "api/v1"
+  process.env.NODE_ENV === "production"
+    ? "/api/v1"
     : "http://localhost:8000/api/v1";
 const userUrl = rootUrl + "/user";
 const transUrl = rootUrl + "/transaction";
@@ -75,7 +75,7 @@ export const postTrans = async (formData) => {
         Authorization: userId,
       },
     });
-    console.log(data + "------- axios return data   ***"); // if you destructure data, transform.js wont have data, but if you not and  console data here it will return obj obj but won't dispaly any result.
+    console.log(data, "------- axios return data   ***"); // if you destructure data, transform.js wont have data, but if you not and  console data here it will return obj obj but won't dispaly any result.
     return data;
   } catch (error) {
     return {
