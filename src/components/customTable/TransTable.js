@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
 import { Button, Form } from "react-bootstrap";
 import { deleteTrans } from "../../utils/axiosHelper";

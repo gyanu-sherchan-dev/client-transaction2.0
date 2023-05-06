@@ -42,7 +42,6 @@ const TransForm = ({
     setCheckBox(false);
     setItemToDelete([]);
 
-    //
     //why we need initialState data.
     //let say we have done the call api to send data to database
     //after that reset the form
