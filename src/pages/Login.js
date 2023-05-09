@@ -11,8 +11,8 @@ export const Login = () => {
   const navigate = useNavigate();
   const [response, setResponse] = useState({});
   const [form, setForm] = useState({
-    email: "g@gmail.com",
-    pin: "1234",
+    email: "",
+    pin: "",
   });
 
   // useEffect(() => {
@@ -29,7 +29,7 @@ export const Login = () => {
     },
     {
       label: "Pin",
-      placeholder: "1234",
+      placeholder: "****",
       required: true,
       name: "pin",
       type: "number",

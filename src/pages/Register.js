@@ -24,7 +24,7 @@ export const Register = ({ registerbg }) => {
     },
     {
       label: "Pin",
-      placeholder: "1234",
+      placeholder: "****",
       required: true,
       name: "pin",
       type: "number",
